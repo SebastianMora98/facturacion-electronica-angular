@@ -1,0 +1,106 @@
+<p-toast></p-toast>
+<div class="card mt-3">
+  <p-table
+    [value]="this.accesorioService.accesorios"
+    dataKey="id"
+    editMode="row"
+    styleClass="p-datatable-sm"
+  >
+    <ng-template pTemplate="caption"> Accesorios </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Código</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th style="width: 8rem"></th>
+      </tr>
+    </ng-template>
+    <ng-template
+      pTemplate="body"
+      let-accesorio
+      let-editing="editing"
+      let-ri="rowIndex"
+    >
+      <tr [pEditableRow]="accesorio">
+        <td pEditableColumn>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input
+                pInputText
+                type="text"
+                [(ngModel)]="accesorio.codigo"
+                required
+              />
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ accesorio.codigo }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td pEditableColumn>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input
+                pInputText
+                type="text"
+                [(ngModel)]="accesorio.nombre"
+                required
+              />
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ accesorio.nombre }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td pEditableColumn>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input
+                pInputText
+                type="text"
+                [(ngModel)]="accesorio.descripcion"
+                required
+              />
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ accesorio.descripcion }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+
+        <td style="text-align: center">
+          <button
+            *ngIf="!editing"
+            pButton
+            pRipple
+            type="button"
+            pInitEditableRow
+            icon="pi pi-pencil"
+            (click)="onRowEditInit(accesorio)"
+            class="p-button-rounded p-button-text"
+          ></button>
+          <button
+            *ngIf="editing"
+            pButton
+            pRipple
+            type="button"
+            pSaveEditableRow
+            icon="pi pi-check"
+            (click)="onRowEditSave(accesorio)"
+            class="p-button-rounded p-button-text p-button-success p-mr-2"
+          ></button>
+          <button
+            *ngIf="editing"
+            pButton
+            pRipple
+            type="button"
+            pCancelEditableRow
+            icon="pi pi-times"
+            (click)="onRowEditCancel(accesorio, ri)"
+            class="p-button-rounded p-button-text p-button-danger"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

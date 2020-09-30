@@ -1,0 +1,206 @@
+<p-toast [style]="{ marginTop: '80px' }"></p-toast>
+
+<div class="card m-4 p-4">
+  <form
+    #formularioOrdenes="ngForm"
+    (ngSubmit)="submitOrden(formularioOrdenes.form)"
+  >
+    <div class="p-fluid p-formgrid p-grid">
+      <div class="p-field p-col-12 p-md-4">
+        <span class="p-float-label">
+          <p-calendar
+            disabled="true"
+            [(ngModel)]="fecha"
+            [ngModelOptions]="{ standalone: true }"
+          ></p-calendar>
+        </span>
+      </div>
+      <div class="p-field p-col-12 p-md-4">
+        <div class="p-field">
+          <input
+            name="numOrden"
+            type="number"
+            ngModel
+            pInputText
+            placeholder="Numero de orden"
+          />
+        </div>
+      </div>
+      <div class="p-field p-col-12 p-md-4">
+        <button
+          type="button"
+          pButton
+          pRipple
+          label="Rellenar Campos"
+          (click)="rellenar(formularioOrdenes.form)"
+          styleClass="p-button-warn"
+          style="height: 39px"
+        ></button>
+      </div>
+      <div class="p-field p-col-12 p-md-12">
+        <h5>Datos cliente</h5>
+      </div>
+      <div class="p-field p-col-12 p-md-4">
+        <label for="firstname6">Cédula</label>
+        <div class="p-d-flex">
+          <input
+            class="form-control"
+            name="cedula"
+            type="text"
+            pInputText
+            ngModel
+          />
+          <button
+            type="button"
+            pButton
+            pRipple
+            icon="pi pi-search"
+            (click)="show(formularioOrdenes.form)"
+            styleClass="p-button-warn"
+            style="height: 39px"
+          ></button>
+        </div>
+      </div>
+      <div class="p-field p-col-12 p-md-4">
+        <label for="nombre">Nombre</label>
+        <input
+          id="nombre"
+          class="form-control"
+          name="nombre"
+          type="text"
+          pInputText
+          ngModel
+        />
+      </div>
+      <div class="p-field p-col-12 p-md-4">
+        <label for="direccion">Direccion</label>
+        <input
+          id="direccion"
+          class="form-control"
+          name="direccion"
+          type="text"
+          pInputText
+          ngModel
+        />
+      </div>
+      <div class="p-field p-col-12 p-md-12">
+        <h5>Datos del Equipo</h5>
+      </div>
+      <div class="p-field p-col-12 p-md-2">
+        <label for="tipoEquipo">Tipo de equipo</label>
+        <input
+          id="tipoEquipo"
+          class="form-control"
+          name="equipo"
+          type="text"
+          pInputText
+          ngModel
+        />
+      </div>
+      <div class="p-field p-col-12 p-md-2">
+        <label for="marca">Marca</label>
+        <input
+          id="marca"
+          class="form-control"
+          name="marca"
+          type="text"
+          pInputText
+          ngModel
+        />
+      </div>
+      <div class="p-field p-col-12 p-md-2">
+        <label for="modelo">Modelo</label>
+        <input
+          id="modelo"
+          class="form-control"
+          name="modelo"
+          type="text"
+          pInputText
+          ngModel
+        />
+      </div>
+      <div class="p-field p-col-12 p-md-2">
+        <label for="placa">Placa inventario</label>
+        <input
+          id="placa"
+          class="form-control"
+          name="placa"
+          type="text"
+          pInputText
+          ngModel
+        />
+      </div>
+      <div class="p-field p-col-12 p-md-2">
+        <label for="serie">Serie</label>
+        <input
+          id="serie"
+          class="form-control"
+          name="serie"
+          type="text"
+          pInputText
+          ngModel
+        />
+      </div>
+      <div class="p-field p-col-12 p-md-12">
+        <h5>Datos del Equipo</h5>
+      </div>
+      <div class="p-field p-col-12 p-md-3">
+        <label for="lastname6">Accesorios</label>
+        <p-multiSelect
+          name="accesorioSeleccionado"
+          optionLabel="name"
+          [options]="accesorios"
+          [(ngModel)]="accesorioSeleccionado"
+          [ngModelOptions]="{ standalone: true }"
+        ></p-multiSelect>
+      </div>
+      <div class="p-field p-col-12 p-md-3">
+        <label for="lastname6">Estado</label>
+        <p-dropdown
+          name="estadoSeleccionado"
+          optionLabel="name"
+          [options]="estado"
+          [(ngModel)]="estadoSeleccionado"
+          [ngModelOptions]="{ standalone: true }"
+        ></p-dropdown>
+      </div>
+      <div class="p-field p-col-12 p-md-3">
+        <label for="tecnico">Tecnico</label>
+        <input
+          id="tecnico"
+          class="form-control"
+          name="tecnico"
+          type="text"
+          pInputText
+          ngModel
+        />
+      </div>
+      <div class="p-field p-col-6">
+        <label for="averias">Averias y Detalles</label>
+        <textarea
+          id="averias"
+          class="form-control"
+          name="averias"
+          type="text"
+          rows="4"
+          pInputTextarea
+          ngModel
+        ></textarea>
+      </div>
+      <div class="p-field p-col-6">
+        <label for="informe">Informe Cliente</label>
+        <textarea
+          id="informe"
+          class="form-control"
+          name="informe"
+          type="text"
+          rows="4"
+          pInputTextarea
+          ngModel
+        ></textarea>
+      </div>
+    </div>
+    <!--[disabled]="!formularioOrdenes.valid" -->
+    <button pButton type="submit" label="Guardar"></button>
+  </form>
+</div>

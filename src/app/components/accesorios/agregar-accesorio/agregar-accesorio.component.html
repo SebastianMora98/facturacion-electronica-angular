@@ -1,0 +1,33 @@
+<p-toast></p-toast>
+<div class="card mt-3">
+  <h5 class="m-3">Agregar accesorio</h5>
+  <div class="p-d-flex p-flex-wrap">
+    <span class="p-float-label m-3">
+      <input
+        id="float-input2"
+        type="text"
+        pInputText
+        [(ngModel)]="nombre"
+        ngModel
+      />
+      <label for="float-input2">Nombre</label>
+    </span>
+    <span class="p-float-label m-3">
+      <input
+        id="float-input3"
+        type="text"
+        pInputText
+        [(ngModel)]="descripcion"
+        ngModel
+      />
+      <label for="float-input3">Descripción</label>
+    </span>
+    <button
+      class="m-3"
+      pButton
+      type="button"
+      label="Agregar"
+      (click)="agregarAccesorio()"
+    ></button>
+  </div>
+</div>
