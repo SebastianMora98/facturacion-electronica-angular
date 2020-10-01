@@ -1,12 +1,15 @@
 <p-toast [style]="{ marginTop: '80px' }"></p-toast>
-
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+></p-confirmDialog>
 <div class="card m-4 p-4">
   <form
     #formularioOrdenes="ngForm"
     (ngSubmit)="submitOrden(formularioOrdenes.form)"
   >
     <div class="p-fluid p-formgrid p-grid">
-      <div class="p-field p-col-12 p-md-4">
+      <div class="p-field p-col-12 p-md-3">
         <span class="p-float-label">
           <p-calendar
             disabled="true"
@@ -15,18 +18,34 @@
           ></p-calendar>
         </span>
       </div>
-      <div class="p-field p-col-12 p-md-4">
+      <div class="p-field p-col-12 p-md-3">
         <div class="p-field">
           <input
             name="numOrden"
             type="number"
-            ngModel
+            [(ngModel)]="orden"
+            [ngModelOptions]="{ standalone: true }"
             pInputText
+            disabled
             placeholder="Numero de orden"
           />
         </div>
       </div>
-      <div class="p-field p-col-12 p-md-4">
+      <div class="p-field p-col-12 p-md-3">
+        <div class="p-field">
+          <input
+            name="cambiarOrden"
+            type="number"
+            min="0"
+            ngModel
+            (keyup.enter)="cambiarOrden(formularioOrdenes.form)"
+            pInputText
+            placeholder="Cambiar orden"
+          />
+        </div>
+      </div>
+
+      <div class="p-field p-col-12 p-md-3">
         <button
           type="button"
           pButton
@@ -57,7 +76,7 @@
             icon="pi pi-search"
             (click)="show(formularioOrdenes.form)"
             styleClass="p-button-warn"
-            style="height: 39px"
+            style="height: 44px"
           ></button>
         </div>
       </div>
@@ -201,6 +220,38 @@
       </div>
     </div>
     <!--[disabled]="!formularioOrdenes.valid" -->
-    <button pButton type="submit" label="Guardar"></button>
+    <button
+      class="p-mr-2 p-mb-2"
+      type="button"
+      pButton
+      pRipple
+      label="Nuevo"
+      (click)="nuevo(formularioOrdenes.form)"
+      styleClass="p-button-warn"
+    ></button>
+    <button
+      class="p-mr-2 p-mb-2"
+      pButton
+      type="submit"
+      label="Guardar"
+    ></button>
+    <button
+      class="p-mr-2 p-mb-2"
+      type="button"
+      pButton
+      pRipple
+      label="Modificar"
+      (click)="modificar(formularioOrdenes.form)"
+      styleClass="p-button-warn"
+    ></button>
+    <button
+      class="p-mr-2 p-mb-2"
+      type="button"
+      pButton
+      pRipple
+      label="Imprimir"
+      styleClass="p-button-warn"
+    ></button>
+    <!--(click)="imprimir(formularioOrdenes.form)"-->
   </form>
 </div>

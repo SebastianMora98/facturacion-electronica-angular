@@ -1,0 +1,41 @@
+import { IOrden } from './interfaces/orden';
+
+export const ORDENES: IOrden[] = [
+  {
+    fecha: new Date(),
+    numOrden: '0',
+    accesorioSeleccionado: [
+      { name: 'Cargador portatil', code: '0' },
+      { name: 'Mouse', code: '1' },
+    ],
+    estadoSeleccionado: [{ name: 'Abierto', code: 'Abierto' }],
+    averias: 'No funciona el audio',
+    nombre: 'Holman',
+    cedula: '1057548324',
+    direccion: 'Calle 4 No 44 - 4 ',
+    equipo: 'Equipo de sonido',
+    informe: '',
+    marca: 'LOGITECH',
+    modelo: '2020',
+    placa: '3',
+    serie: 'Z607 ',
+    tecnico: 'Andrez',
+  },
+  {
+    fecha: new Date(),
+    numOrden: '1',
+    accesorioSeleccionado: [{ name: 'Mouse', code: '1' }],
+    estadoSeleccionado: [{ name: 'Abierto', code: 'Abierto' }],
+    averias: 'El televisor no enciende',
+    nombre: 'Sebastian',
+    cedula: '1060048994',
+    direccion: 'Calle 44 No 44 - 4 ',
+    equipo: 'Televisor',
+    informe: '',
+    marca: 'LG',
+    modelo: 'Smart TV',
+    placa: '2',
+    serie: '32LM630BPDB',
+    tecnico: 'Andrez',
+  },
+];

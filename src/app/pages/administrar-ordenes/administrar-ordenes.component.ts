@@ -1,23 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { ListaClientesComponent } from 'src/app/components/clientes/lista-clientes/lista-clientes.component';
-import { DialogService } from 'primeng/dynamicdialog';
-import { DynamicDialogRef } from 'primeng/dynamicdialog';
-import { MessageService } from 'primeng/api';
-import { ICliente } from 'src/app/interfaces/clientes';
-import { PrimeNGConfig } from 'primeng/api';
-import { SelectItem } from 'primeng/api';
-import { IAccesorio } from '../../interfaces/accesorio';
-import { AccesoriosService } from '../../services/accesorios.service';
-import { AccesoriosComponent } from '../accesorios/accesorios.component';
 import { NgForm } from '@angular/forms';
+import { ListaClientesComponent } from 'src/app/components/clientes/lista-clientes/lista-clientes.component';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+
+import { MessageService } from 'primeng/api';
+import { PrimeNGConfig } from 'primeng/api';
+import { ConfirmationService } from 'primeng/api';
+import { ICliente } from 'src/app/interfaces/clientes';
+import { AccesoriosService } from '../../services/accesorios.service';
+import { OrdenesService } from '../../services/ordenes.service';
+import { IOrden } from 'src/app/interfaces/orden';
+
 interface IDropdown {
   name: string;
   code: string;
 }
+interface Message {
+  severity: string;
+  summary: string;
+  detail: string;
+}
 @Component({
   selector: 'app-administrar-ordenes',
   templateUrl: './administrar-ordenes.component.html',
-  providers: [DialogService, MessageService],
+  providers: [DialogService, MessageService, ConfirmationService],
   styleUrls: ['./administrar-ordenes.component.css'],
 })
 export class AdministrarOrdenesComponent implements OnInit {
@@ -26,12 +32,18 @@ export class AdministrarOrdenesComponent implements OnInit {
   accesorioSeleccionado: IDropdown[];
   estadoSeleccionado: IDropdown[];
   fecha: Date = new Date();
+  orden: String;
+  msgs: Message[] = [];
+
+  position: string;
 
   constructor(
     public dialogService: DialogService,
     public messageService: MessageService,
     private primengConfig: PrimeNGConfig,
-    private accesoriosService: AccesoriosService
+    private confirmationService: ConfirmationService,
+    private accesoriosService: AccesoriosService,
+    private ordenesService: OrdenesService
   ) {
     this.accesoriosService.accesorios.map(({ nombre, codigo }) => {
       this.accesorios.push({ name: nombre, code: codigo });
@@ -46,6 +58,7 @@ export class AdministrarOrdenesComponent implements OnInit {
         code: 'Cerrado',
       },
     ];
+    this.orden = ordenesService.ordenes.length.toString();
   }
 
   ngOnInit(): void {
@@ -76,8 +89,101 @@ export class AdministrarOrdenesComponent implements OnInit {
       }
     });
   }
+  nuevo(form: NgForm) {
+    this.accesorioSeleccionado = [];
+    this.estadoSeleccionado = [];
+    form.reset();
+  }
+  cambiarOrden(form: NgForm) {
+    this.confirmationService.confirm({
+      message:
+        'Esta seguro que quiere cambiar el numero de orden?, perdera todos los cambios que haya realizado.',
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        let encontro: boolean = false;
+        let ordenEncontrada: IOrden;
+        this.ordenesService.ordenes.map((orden) => {
+          if (orden.numOrden == form.value.cambiarOrden.toString()) {
+            encontro = true;
+            ordenEncontrada = orden;
+          }
+        });
 
+        if (encontro) {
+          form.controls['cedula'].setValue(ordenEncontrada.cedula);
+          form.controls['nombre'].setValue(ordenEncontrada.nombre);
+          form.controls['direccion'].setValue(ordenEncontrada.direccion);
+          form.controls['equipo'].setValue(ordenEncontrada.equipo);
+          form.controls['marca'].setValue(ordenEncontrada.marca);
+          form.controls['modelo'].setValue(ordenEncontrada.modelo);
+          form.controls['placa'].setValue(ordenEncontrada.placa);
+          form.controls['serie'].setValue(ordenEncontrada.serie);
+          form.controls['tecnico'].setValue(ordenEncontrada.tecnico);
+          form.controls['averias'].setValue(ordenEncontrada.averias);
+          this.estadoSeleccionado = ordenEncontrada.estadoSeleccionado;
+          this.accesorioSeleccionado = ordenEncontrada.accesorioSeleccionado;
+          this.msgs = [
+            {
+              severity: 'info',
+              summary: 'Confirmed',
+              detail: 'You have accepted',
+            },
+          ];
+          this.orden = form.value.cambiarOrden;
+        } else {
+          this.msgs = [
+            {
+              severity: 'warn',
+              summary: 'No se encontro el numero de orden',
+              detail: 'Este numero de orden esta disponible',
+            },
+          ];
+          this.orden = form.value.cambiarOrden;
+          form.reset();
+        }
+      },
+      reject: () => {
+        this.msgs = [
+          {
+            severity: 'info',
+            summary: 'Rejected',
+            detail: 'You have rejected',
+          },
+        ];
+      },
+    });
+  }
   rellenar(form: NgForm) {
+    form.controls['cedula'].setValue('1057548324');
+    form.controls['nombre'].setValue('Holman');
+    form.controls['direccion'].setValue('Calle 1');
+    form.controls['equipo'].setValue('Ordenador portatil');
+    form.controls['marca'].setValue('Lenovo');
+    form.controls['modelo'].setValue('s340');
+    form.controls['placa'].setValue('2');
+    form.controls['serie'].setValue('14iwl');
+    form.controls['tecnico'].setValue('Walter');
+    form.controls['averias'].setValue(
+      'Enciende pero se apaga despues del logo del bios'
+    );
+  }
+
+  modificar(form: NgForm) {
+    form.controls['cedula'].setValue('1057548324');
+    form.controls['nombre'].setValue('Holman');
+    form.controls['direccion'].setValue('Calle 1');
+    form.controls['equipo'].setValue('Ordenador portatil');
+    form.controls['marca'].setValue('Lenovo');
+    form.controls['modelo'].setValue('s340');
+    form.controls['placa'].setValue('2');
+    form.controls['serie'].setValue('14iwl');
+    form.controls['tecnico'].setValue('Walter');
+    form.controls['averias'].setValue(
+      'Enciende pero se apaga despues del logo del bios'
+    );
+  }
+  imprimir(form: NgForm) {
     form.controls['cedula'].setValue('1057548324');
     form.controls['nombre'].setValue('Holman');
     form.controls['direccion'].setValue('Calle 1');

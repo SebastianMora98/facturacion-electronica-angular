@@ -28,6 +28,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ListaClientesComponent } from './components/clientes/lista-clientes/lista-clientes.component';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { CalendarModule } from 'primeng/calendar';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +55,7 @@ import { CalendarModule } from 'primeng/calendar';
     InputTextareaModule,
     MultiSelectModule,
     CalendarModule,
+    ConfirmDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
