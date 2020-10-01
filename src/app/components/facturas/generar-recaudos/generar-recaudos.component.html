@@ -1,0 +1,104 @@
+<p-toast></p-toast>
+<form #formulario="ngForm" (submit)="submitRecaudo(formulario.form)">
+  <div class="p-field p-grid">
+    <label for="numRecaudo" class="p-col-fixed" style="width: 100px"
+      >Numero Recaudo</label
+    >
+    <div class="p-col">
+      <input id="numRecaudo" name="numRecaudo" type="text" pInputText ngModel />
+    </div>
+  </div>
+  <div class="p-field p-grid">
+    <label for="numFactura" class="p-col-fixed" style="width: 100px"
+      >Numero factura</label
+    >
+    <div class="p-col" *ngIf="this.facturasService.facturaSeleccionada">
+      <input
+        id="numFactura"
+        name="numFactura"
+        type="number"
+        pInputText
+        ngModel
+      />
+    </div>
+  </div>
+  <div class="p-field p-grid">
+    <label for="numApertura" class="p-col-fixed" style="width: 100px"
+      >Numero de apertura</label
+    >
+    <div class="p-col">
+      <input
+        id="numApertura"
+        name="numApertura"
+        type="number"
+        pInputText
+        ngModel
+      />
+    </div>
+  </div>
+
+  <div class="p-field p-grid">
+    <label for="fechaRecaudo" class="p-col-fixed" style="width: 100px"
+      >Fecha de recaudo</label
+    >
+    <div class="p-col">
+      <input
+        id="fechaRecaudo"
+        name="fechaRecaudo"
+        type="date"
+        pInputText
+        ngModel
+      />
+    </div>
+  </div>
+
+  <div class="p-field p-grid">
+    <label for="horaRecaudo" class="p-col-fixed" style="width: 100px"
+      >Hora de recaudo</label
+    >
+    <div class="p-col">
+      <input
+        id="horaRecaudo"
+        name="horaRecaudo"
+        type="text"
+        pInputText
+        ngModel
+      />
+    </div>
+  </div>
+  <div class="p-field p-grid">
+    <label for="valorRecaudo" class="p-col-fixed" style="width: 100px"
+      >Valor de recaudo</label
+    >
+    <div class="p-col">
+      <input
+        id="valorRecaudo"
+        name="valorRecaudo"
+        type="number"
+        pInputText
+        ngModel
+      />
+    </div>
+  </div>
+  <div class="p-field p-grid">
+    <label for="valorRecaudo" class="p-col-fixed" style="width: 100px"
+      >Valor de recaudo</label
+    >
+    <p-dropdown
+      name="estadoSeleccionado"
+      optionLabel="name"
+      [style]="{ 'margin-left': '7px' }"
+      [options]="this.tipoRecaudo"
+      [(ngModel)]="tipoRecaudoSeleccionado"
+      [ngModelOptions]="{ standalone: true }"
+    ></p-dropdown>
+  </div>
+
+  <div class="p-field p-grid">
+    <label for="estado" class="p-col-fixed" style="width: 100px">Estado</label>
+    <div class="p-col">
+      <input id="estado" name="estado" type="text" pInputText ngModel />
+    </div>
+  </div>
+  <button pButton type="submit" label="Submit"></button>
+</form>

@@ -1,77 +1,91 @@
 import { Component, OnInit } from '@angular/core';
 import { FacturasService } from '../../../services/facturas/facturas.service';
-import { IFactura } from '../../../interfaces/factura';
-
+import { ConfirmationService, Message } from 'primeng/api';
 import { MessageService } from 'primeng/api';
-export interface Country {
-  name?: string;
-  code?: string;
-}
 
-export interface Representative {
-  name?: string;
-  image?: string;
-}
-
-export interface Customer {
-  id?: number;
-  name?: string;
-  country?: Country;
-  company?: string;
-  date?: string;
-  status?: string;
-  representative?: Representative;
-}
 @Component({
   selector: 'app-lista-facturas',
   templateUrl: './lista-facturas.component.html',
-  providers: [MessageService],
+  providers: [MessageService, ConfirmationService],
   styleUrls: ['./lista-facturas.component.css'],
 })
 export class ListaFacturasComponent implements OnInit {
-  facturaSeleccionada: IFactura;
+  msgs: Message[] = [];
+  display: boolean = false;
 
-  customers1: Customer[];
-  selectedCustomer1: Customer;
   constructor(
     private messageService: MessageService,
-    public facturaService: FacturasService
-  ) {
-    this.customers1 = [
-      {
-        id: 1000,
-        name: 'James Butt',
-        country: {
-          name: 'Algeria',
-          code: 'dz',
-        },
-        company: 'Benton, John B Jr',
-        date: '2015-09-13',
-        status: 'unqualified',
-
-        representative: {
-          name: 'Ioni Bowcher',
-          image: 'ionibowcher.png',
-        },
-      },
-      {
-        id: 1001,
-        name: 'Josephine Darakjy',
-        country: {
-          name: 'Egypt',
-          code: 'eg',
-        },
-        company: 'Chanay, Jeffrey A Esq',
-        date: '2019-02-09',
-        status: 'proposal',
-
-        representative: {
-          name: 'Amy Elsner',
-          image: 'amyelsner.png',
-        },
-      },
-    ];
-  }
+    public facturaService: FacturasService,
+    private confirmationService: ConfirmationService
+  ) {}
 
   ngOnInit(): void {}
+
+  generarRecaudo() {
+    console.log(this.facturaService.facturaSeleccionada);
+    this.display = true;
+  }
+
+  anularFactura() {
+    this.confirmationService.confirm({
+      message: 'Esta seguro de anular esta factura?',
+      header: 'Confirmacion de anulacion de factura',
+      icon: 'pi pi-info-circle',
+      accept: () => {
+        if (this.facturaService.facturas.length == 1) {
+          this.facturaService.facturas = [];
+          this.facturaService.facturaSeleccionada = null;
+        } else {
+          const id = this.facturaService.facturaSeleccionada.id;
+          const facturas = this.facturaService.facturas.filter(
+            (factura) => factura.id == id
+          );
+          this.facturaService.facturas = facturas;
+          this.facturaService.facturaSeleccionada = null;
+        }
+        this.msgs = [
+          {
+            severity: 'info',
+            summary: 'Confimación',
+            detail: 'Factura eliminada',
+          },
+        ];
+      },
+      reject: () => {
+        this.msgs = [
+          {
+            severity: 'info',
+            summary: 'Cancelado',
+            detail: 'Se ha cancelado la operación',
+          },
+        ];
+      },
+    });
+  }
+
+  inprimirFactura() {
+    this.confirmationService.confirm({
+      message: 'Are you sure that you want to proceed?',
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.msgs = [
+          {
+            severity: 'info',
+            summary: 'Confirmed',
+            detail: 'You have accepted',
+          },
+        ];
+      },
+      reject: () => {
+        this.msgs = [
+          {
+            severity: 'info',
+            summary: 'Rejected',
+            detail: 'You have rejected',
+          },
+        ];
+      },
+    });
+  }
 }

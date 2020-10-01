@@ -10,7 +10,10 @@ import { AppComponent } from './app.component';
 import { MenubarComponent } from './shared/menubar/menubar.component';
 import { ListaAccesoriosComponent } from './components/accesorios/lista-accesorios/lista-accesorios.component';
 import { AgregarAccesorioComponent } from './components/accesorios/agregar-accesorio/agregar-accesorio.component';
-
+import { ListaFacturasComponent } from './components/facturas/lista-facturas/lista-facturas.component';
+import { GestionarRecaudosComponent } from './pages/gestionar-recaudos/gestionar-recaudos.component';
+import { DetallesFacturaComponent } from './components/facturas/detalles-factura/detalles-factura.component';
+import { ListaRecaudosComponent } from './components/facturas/lista-recaudos/lista-recaudos.component';
 //paginas
 import { AccesoriosComponent } from './pages/accesorios/accesorios.component';
 import { AdministrarOrdenesComponent } from './pages/administrar-ordenes/administrar-ordenes.component';
@@ -29,8 +32,9 @@ import { ListaClientesComponent } from './components/clientes/lista-clientes/lis
 import { MultiSelectModule } from 'primeng/multiselect';
 import { CalendarModule } from 'primeng/calendar';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { ListaFacturasComponent } from './components/facturas/lista-facturas/lista-facturas.component';
-import { GestionarRecaudosComponent } from './pages/gestionar-recaudos/gestionar-recaudos.component';
+import { MessagesModule } from 'primeng/messages';
+import { DialogModule } from 'primeng/dialog';
+import { GenerarRecaudosComponent } from './components/facturas/generar-recaudos/generar-recaudos.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +46,9 @@ import { GestionarRecaudosComponent } from './pages/gestionar-recaudos/gestionar
     ListaClientesComponent,
     ListaFacturasComponent,
     GestionarRecaudosComponent,
+    DetallesFacturaComponent,
+    ListaRecaudosComponent,
+    GenerarRecaudosComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +67,8 @@ import { GestionarRecaudosComponent } from './pages/gestionar-recaudos/gestionar
     MultiSelectModule,
     CalendarModule,
     ConfirmDialogModule,
+    MessagesModule,
+    DialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

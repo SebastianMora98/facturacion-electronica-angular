@@ -1,0 +1,22 @@
+<div class="card m-4 p-4">
+  <h5>Detalles Factura</h5>
+  <p-table
+    *ngIf="this.facturaService.facturaSeleccionada"
+    [value]="this.facturaService.facturaSeleccionada.detalles"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>cantidad</th>
+        <th>codigoProducto</th>
+        <th>descripcion</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-detalles>
+      <tr>
+        <td>{{ detalles.cantidad }}</td>
+        <td>{{ detalles.codigoProducto }}</td>
+        <td>{{ detalles.descripcion }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

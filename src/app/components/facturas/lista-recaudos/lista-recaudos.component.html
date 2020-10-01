@@ -1,0 +1,32 @@
+<div class="card m-4 p-4">
+  <h5>Recaudos</h5>
+  <p-table
+    *ngIf="this.facturaService.facturaSeleccionada"
+    [value]="this.facturaService.facturaSeleccionada.recaudos"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Numero recaudo</th>
+        <th>Numero factura</th>
+        <th>Numero apertura</th>
+        <th>Fecha recaudo</th>
+        <th>Hora recaudo</th>
+        <th>Valor recaudo</th>
+        <th>Tipo recaudo</th>
+        <th>Estado</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-recaudos>
+      <tr>
+        <td>{{ recaudos.numRecaudo }}</td>
+        <td>{{ recaudos.numFactura }}</td>
+        <td>{{ recaudos.numApertura }}</td>
+        <td>{{ recaudos.fechaRecaudo | date }}</td>
+        <td>{{ recaudos.horaRecaudo }}</td>
+        <td>{{ recaudos.valorRecaudo | currency: "COP ":"symbol" }}</td>
+        <td>{{ recaudos.tipoRecaudo }}</td>
+        <td>{{ recaudos.estado }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

@@ -8,6 +8,7 @@ import { FACTURAS } from '../../mocks/mock-facturas';
 })
 export class FacturasService {
   facturas: IFactura[];
+  facturaSeleccionada: IFactura;
   constructor() {
     this.facturas = FACTURAS;
   }

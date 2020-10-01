@@ -11,6 +11,30 @@ export const FACTURAS: IFactura[] = [
     valorRecaudo: 0,
     cedula: '800315845-5',
     nombres: 'INSTITUCION EDUCATIVA POLITECNICO',
+    detalles: [
+      {
+        cantidad: 1,
+        codigoProducto: '',
+        descripcion: 'Caterias AAA',
+      },
+      {
+        cantidad: 2,
+        codigoProducto: '',
+        descripcion: 'Cable fuente de alimentacion',
+      },
+    ],
+    recaudos: [
+      {
+        numRecaudo: '0',
+        numFactura: '2290',
+        numApertura: '31',
+        fechaRecaudo: new Date('2020-09-30'),
+        horaRecaudo: '00:44',
+        valorRecaudo: 0,
+        tipoRecaudo: 'Abono',
+        estado: 'A',
+      },
+    ],
   },
   {
     id: 2,
@@ -22,5 +46,13 @@ export const FACTURAS: IFactura[] = [
     valorRecaudo: 2125000,
     cedula: '805003737-9',
     nombres: 'UNIVERSIDAD PEDAGÓGICA Y TECNOLÓGICA DE COLOMBIA',
+    detalles: [
+      {
+        cantidad: 3,
+        codigoProducto: '',
+        descripcion: 'Bateria Portatil Acer',
+      },
+    ],
+    recaudos: [],
   },
 ];

@@ -1,12 +1,16 @@
 <p-toast></p-toast>
 
-<div class="card m-3 p-3">
+<p-confirmDialog
+  header="Confirmation"
+  icon="pi pi-exclamation-triangle"
+></p-confirmDialog>
+<div class="card m-4 p-4">
   <h5>Facturas</h5>
   <p-table
     #dt1
     [value]="this.facturaService.facturas"
     selectionMode="single"
-    [(selection)]="facturaSeleccionada"
+    [(selection)]="this.facturaService.facturaSeleccionada"
     dataKey="id"
     styleClass="p-datatable-sm"
     [rows]="10"
@@ -76,4 +80,46 @@
       </tr>
     </ng-template>
   </p-table>
+  <div class="p-d-flex pt-3">
+    <div class="p-mr-2">
+      <p-button
+        (click)="anularFactura()"
+        icon="pi pi-times"
+        label="AnularFactura"
+        [disabled]="
+          this.facturaService.facturas.length == 0 ||
+          this.facturaService.facturaSeleccionada == undefined
+        "
+      ></p-button>
+    </div>
+    <div class="p-mr-2" *ngIf="this.facturaService.facturaSeleccionada">
+      <p-button
+        type="button"
+        (click)="generarRecaudo()"
+        icon="pi pi-external-link"
+        [disabled]="
+          this.facturaService.facturas.length == 0 ||
+          this.facturaService.facturaSeleccionada == undefined
+        "
+        label="Generar recaudo"
+      ></p-button>
+    </div>
+
+    <div class="p-mr-2">
+      <p-button
+        (click)="inprimirFactura()"
+        icon="pi pi-check"
+        label="inprimirFactura"
+        [disabled]="
+          this.facturaService.facturas.length == 0 ||
+          this.facturaService.facturaSeleccionada == undefined
+        "
+      ></p-button>
+    </div>
+  </div>
+  <p-dialog header="Generar recaudo" [(visible)]="this.display" width="4000">
+    <app-generar-recaudos></app-generar-recaudos>
+  </p-dialog>
+
+  <p-messages [value]="msgs"></p-messages>
 </div>
