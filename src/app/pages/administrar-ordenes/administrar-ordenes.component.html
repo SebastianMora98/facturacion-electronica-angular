@@ -234,16 +234,9 @@
       pButton
       type="submit"
       label="Guardar"
+      (click)="guardar(formularioOrdenes.form)"
     ></button>
-    <button
-      class="p-mr-2 p-mb-2"
-      type="button"
-      pButton
-      pRipple
-      label="Modificar"
-      (click)="modificar(formularioOrdenes.form)"
-      styleClass="p-button-warn"
-    ></button>
+
     <button
       class="p-mr-2 p-mb-2"
       type="button"
@@ -252,6 +245,6 @@
       label="Imprimir"
       styleClass="p-button-warn"
     ></button>
-    <!--(click)="imprimir(formularioOrdenes.form)"-->
+    <!--(click)="imprimir(formularioOrdenes.form)" -->
   </form>
 </div>

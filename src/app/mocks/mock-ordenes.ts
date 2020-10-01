@@ -1,4 +1,4 @@
-import { IOrden } from './interfaces/orden';
+import { IOrden } from '../interfaces/orden';
 
 export const ORDENES: IOrden[] = [
   {

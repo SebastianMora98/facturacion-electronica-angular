@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { ICliente } from '../interfaces/clientes';
-import { CLIENTES } from '../mock-clientes';
+import { CLIENTES } from '../mocks/mock-clientes';
 
 @Injectable({
   providedIn: 'root',

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { IAccesorio } from '../interfaces/accesorio';
-import { ACCESORIOS } from '../mock-accesorios';
+import { ACCESORIOS } from '../mocks/mock-accesorios';
 
 @Injectable({
   providedIn: 'root',

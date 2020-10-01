@@ -154,36 +154,48 @@ export class AdministrarOrdenesComponent implements OnInit {
       },
     });
   }
-  rellenar(form: NgForm) {
-    form.controls['cedula'].setValue('1057548324');
-    form.controls['nombre'].setValue('Holman');
-    form.controls['direccion'].setValue('Calle 1');
-    form.controls['equipo'].setValue('Ordenador portatil');
-    form.controls['marca'].setValue('Lenovo');
-    form.controls['modelo'].setValue('s340');
-    form.controls['placa'].setValue('2');
-    form.controls['serie'].setValue('14iwl');
-    form.controls['tecnico'].setValue('Walter');
-    form.controls['averias'].setValue(
-      'Enciende pero se apaga despues del logo del bios'
-    );
+  guardar(form: NgForm) {
+    let encontro: boolean = false;
+    let indice: number;
+    this.ordenesService.ordenes.map((orden, i) => {
+      if (orden.numOrden == this.orden.toString()) {
+        encontro = true;
+        indice = i;
+      }
+    });
+    if (encontro) {
+      this.ordenesService.ordenes[indice].cedula = form.value.cedula;
+      this.ordenesService.ordenes[indice].nombre = form.value.nombres;
+      this.ordenesService.ordenes[indice].direccion = form.value.direccion;
+      this.ordenesService.ordenes[indice].equipo = form.value.equipo;
+      this.ordenesService.ordenes[indice].marca = form.value.marca;
+      this.ordenesService.ordenes[indice].modelo = form.value.modelo;
+      this.ordenesService.ordenes[indice].placa = form.value.placa;
+      this.ordenesService.ordenes[indice].serie = form.value.serie;
+      this.ordenesService.ordenes[indice].tecnico = form.value.tecnico;
+      this.ordenesService.ordenes[indice].averias = form.value.averias;
+    } else {
+      this.ordenesService.ordenes.push({
+        fecha: new Date(),
+        accesorioSeleccionado: this.accesorioSeleccionado,
+        estadoSeleccionado: this.estadoSeleccionado,
+        averias: form.value.averias,
+        cedula: form.value.cedula,
+        direccion: form.value.direccion,
+        equipo: form.value.equipo,
+        informe: '',
+        marca: form.value.marca,
+        modelo: form.value.modelo,
+        nombre: form.value.nombres,
+        numOrden: this.orden.toString(),
+        placa: form.value.placa,
+        serie: form.value.serie,
+        tecnico: form.value.tecnico,
+      });
+    }
   }
 
-  modificar(form: NgForm) {
-    form.controls['cedula'].setValue('1057548324');
-    form.controls['nombre'].setValue('Holman');
-    form.controls['direccion'].setValue('Calle 1');
-    form.controls['equipo'].setValue('Ordenador portatil');
-    form.controls['marca'].setValue('Lenovo');
-    form.controls['modelo'].setValue('s340');
-    form.controls['placa'].setValue('2');
-    form.controls['serie'].setValue('14iwl');
-    form.controls['tecnico'].setValue('Walter');
-    form.controls['averias'].setValue(
-      'Enciende pero se apaga despues del logo del bios'
-    );
-  }
-  imprimir(form: NgForm) {
+  rellenar(form: NgForm) {
     form.controls['cedula'].setValue('1057548324');
     form.controls['nombre'].setValue('Holman');
     form.controls['direccion'].setValue('Calle 1');

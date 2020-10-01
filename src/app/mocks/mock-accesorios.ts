@@ -1,4 +1,4 @@
-import { IAccesorio } from './interfaces/accesorio';
+import { IAccesorio } from '../interfaces/accesorio';
 
 export const ACCESORIOS: IAccesorio[] = [
   {
