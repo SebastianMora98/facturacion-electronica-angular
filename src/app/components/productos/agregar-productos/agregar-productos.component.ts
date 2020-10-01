@@ -6,14 +6,6 @@ interface IDropdown {
   name: string;
   code: string;
 }
-export interface IProductos {
-  id: number;
-  codigo: string;
-  nombre: string;
-  cantidadStock: number;
-  stockMinimo: number;
-  StockMaximo: number;
-}
 
 @Component({
   selector: 'app-agregar-productos',
@@ -66,7 +58,7 @@ export class AgregarProductosComponent implements OnInit {
       this.messageService.add({
         severity: 'success',
         summary: 'Exito',
-        detail: 'Accesorio agregado',
+        detail: 'Producto agregado',
       });
     } else {
       this.messageService.add({

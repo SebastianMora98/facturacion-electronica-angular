@@ -165,7 +165,7 @@ export class AdministrarOrdenesComponent implements OnInit {
     });
     if (encontro) {
       this.ordenesService.ordenes[indice].cedula = form.value.cedula;
-      this.ordenesService.ordenes[indice].nombre = form.value.nombres;
+      this.ordenesService.ordenes[indice].nombre = form.value.nombre;
       this.ordenesService.ordenes[indice].direccion = form.value.direccion;
       this.ordenesService.ordenes[indice].equipo = form.value.equipo;
       this.ordenesService.ordenes[indice].marca = form.value.marca;

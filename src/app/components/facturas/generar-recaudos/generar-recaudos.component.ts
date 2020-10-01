@@ -57,7 +57,7 @@ export class GenerarRecaudosComponent implements OnInit {
             fechaRecaudo: form.value.fechaRecaudo,
             horaRecaudo: form.value.horaRecaudo,
             valorRecaudo: form.value.valorRecaudo,
-            tipoRecaudo: this.tipoRecaudoSeleccionado.name,
+            tipoRecaudo: this.tipoRecaudoSeleccionado.code,
             estado: form.value.estado,
           });
         }

@@ -63,8 +63,8 @@ export class MenubarComponent implements OnInit {
           { label: 'Configuración' },
           { label: 'Clientes' },
           { label: 'Proveedores' },
-          { label: 'Backup' },
           { label: 'Productos', routerLink: '/productos' },
+          { label: 'Entrada Productos', routerLink: '/entrada-productos' },
         ],
       },
     ];

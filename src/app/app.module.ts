@@ -14,6 +14,8 @@ import { ListaFacturasComponent } from './components/facturas/lista-facturas/lis
 import { GestionarRecaudosComponent } from './pages/gestionar-recaudos/gestionar-recaudos.component';
 import { DetallesFacturaComponent } from './components/facturas/detalles-factura/detalles-factura.component';
 import { ListaRecaudosComponent } from './components/facturas/lista-recaudos/lista-recaudos.component';
+import { EntradaProductosComponent } from './pages/entrada-productos/entrada-productos.component';
+
 //paginas
 import { AccesoriosComponent } from './pages/accesorios/accesorios.component';
 import { AdministrarOrdenesComponent } from './pages/administrar-ordenes/administrar-ordenes.component';
@@ -39,6 +41,8 @@ import { ListaProductosComponent } from './components/productos/lista-productos/
 import { AgregarProductosComponent } from './components/productos/agregar-productos/agregar-productos.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ProductosComponent } from './pages/productos/productos.component';
+import { AgregarEntradaProductosComponent } from './components/productos/agregar-entrada-productos/agregar-entrada-productos.component';
+import { ListaEntradaProductosComponent } from './components/productos/lista-entrada-productos/lista-entrada-productos.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +61,9 @@ import { ProductosComponent } from './pages/productos/productos.component';
     AgregarProductosComponent,
     HomeComponent,
     ProductosComponent,
+    EntradaProductosComponent,
+    AgregarEntradaProductosComponent,
+    ListaEntradaProductosComponent,
   ],
   imports: [
     BrowserModule,

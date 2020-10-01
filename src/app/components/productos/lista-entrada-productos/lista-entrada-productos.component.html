@@ -2,41 +2,44 @@
 <div class="card mt-3 p-3">
   <h5>Productos</h5>
   <p-table
-    [value]="this.productosService.productos"
+    [value]="this.productosService.ingresoProductos"
     dataKey="id"
     editMode="row"
     styleClass="p-datatable-sm"
   >
     <ng-template pTemplate="header">
       <tr>
-        <th>Codigo</th>
-        <th>Nombre</th>
-        <th>Cantidad Stock</th>
-        <th>Stock Minimo</th>
-        <th>Stock Maximo</th>
+        <th>codigo</th>
+        <th>codigoProducto</th>
+        <th>fechaIngreso</th>
+        <th>valorUnitario</th>
+        <th>cantidad</th>
+        <th>totalCompra</th>
+        <th>proveedor</th>
+        <th>estado</th>
 
         <th style="width: 8rem"></th>
       </tr>
     </ng-template>
     <ng-template
       pTemplate="body"
-      let-producto
+      let-ingresoProducto
       let-editing="editing"
       let-ri="rowIndex"
     >
-      <tr [pEditableRow]="producto">
+      <tr [pEditableRow]="ingresoProducto">
         <td pEditableColumn>
           <p-cellEditor>
             <ng-template pTemplate="input">
               <input
                 pInputText
                 type="text"
-                [(ngModel)]="producto.codigo"
+                [(ngModel)]="ingresoProducto.codigo"
                 required
               />
             </ng-template>
             <ng-template pTemplate="output">
-              {{ producto.codigo }}
+              {{ ingresoProducto.codigo }}
             </ng-template>
           </p-cellEditor>
         </td>
@@ -46,12 +49,27 @@
               <input
                 pInputText
                 type="text"
-                [(ngModel)]="producto.nombre"
+                [(ngModel)]="ingresoProducto.codigoProducto"
                 required
               />
             </ng-template>
             <ng-template pTemplate="output">
-              {{ producto.nombre }}
+              {{ ingresoProducto.codigoProducto }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td pEditableColumn>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input
+                pInputText
+                type="date"
+                [(ngModel)]="ingresoProducto.fechaIngreso"
+                required
+              />
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ ingresoProducto.fechaIngreso | date }}
             </ng-template>
           </p-cellEditor>
         </td>
@@ -61,12 +79,12 @@
               <input
                 pInputText
                 type="number"
-                [(ngModel)]="producto.cantidadStock"
+                [(ngModel)]="ingresoProducto.valorUnitario"
                 required
               />
             </ng-template>
             <ng-template pTemplate="output">
-              {{ producto.cantidadStock }}
+              {{ ingresoProducto.valorUnitario | currency: "COP ":"symbol" }}
             </ng-template>
           </p-cellEditor>
         </td>
@@ -76,12 +94,12 @@
               <input
                 pInputText
                 type="number"
-                [(ngModel)]="producto.stockMinimo"
+                [(ngModel)]="ingresoProducto.cantidad"
                 required
               />
             </ng-template>
             <ng-template pTemplate="output">
-              {{ producto.stockMinimo }}
+              {{ ingresoProducto.cantidad }}
             </ng-template>
           </p-cellEditor>
         </td>
@@ -91,12 +109,42 @@
               <input
                 pInputText
                 type="number"
-                [(ngModel)]="producto.StockMaximo"
+                [(ngModel)]="ingresoProducto.totalCompra"
                 required
               />
             </ng-template>
             <ng-template pTemplate="output">
-              {{ producto.StockMaximo }}
+              {{ ingresoProducto.totalCompra }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td pEditableColumn>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input
+                pInputText
+                type="number"
+                [(ngModel)]="ingresoProducto.proveedor"
+                required
+              />
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ ingresoProducto.proveedor }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td pEditableColumn>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input
+                pInputText
+                type="number"
+                [(ngModel)]="ingresoProducto.estado"
+                required
+              />
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ ingresoProducto.estado }}
             </ng-template>
           </p-cellEditor>
         </td>
@@ -109,7 +157,7 @@
             type="button"
             pInitEditableRow
             icon="pi pi-pencil"
-            (click)="onRowEditInit(producto)"
+            (click)="onRowEditInit(ingresoProducto)"
             class="p-button-rounded p-button-text"
           ></button>
           <button
@@ -119,7 +167,7 @@
             type="button"
             pSaveEditableRow
             icon="pi pi-check"
-            (click)="onRowEditSave(producto)"
+            (click)="onRowEditSave(ingresoProducto)"
             class="p-button-rounded p-button-text p-button-success p-mr-2"
           ></button>
           <button
@@ -129,7 +177,7 @@
             type="button"
             pCancelEditableRow
             icon="pi pi-times"
-            (click)="onRowEditCancel(producto, ri)"
+            (click)="onRowEditCancel(ingresoProducto, ri)"
             class="p-button-rounded p-button-text p-button-danger"
           ></button>
         </td>

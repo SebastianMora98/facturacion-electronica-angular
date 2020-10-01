@@ -6,3 +6,15 @@ export interface IProductos {
   stockMinimo: number;
   StockMaximo: number;
 }
+
+export interface IIngresoProductos {
+  id: string;
+  codigo: string;
+  codigoProducto: string;
+  fechaIngreso: Date;
+  valorUnitario: number;
+  cantidad: number;
+  totalCompra: number;
+  proveedor: string;
+  estado: string;
+}

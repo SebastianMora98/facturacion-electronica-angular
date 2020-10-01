@@ -1,0 +1,92 @@
+<p-toast></p-toast>
+<div class="card mt-3">
+  <h5 class="m-3">Ingresar producto</h5>
+  <div class="p-d-flex p-flex-wrap">
+    <span class="p-float-label m-3">
+      <input
+        id="float-input2"
+        type="text"
+        pInputText
+        [(ngModel)]="codigo"
+        ngModel
+      />
+      <label for="float-input2">Codigo Entrada</label>
+    </span>
+    <span class="p-float-label m-3">
+      <input
+        id="float-input3"
+        type="text"
+        pInputText
+        [(ngModel)]="codigoProducto"
+        ngModel
+      />
+      <label for="float-input3">codigoProducto</label>
+    </span>
+    <span class="p-float-label m-3">
+      <input
+        id="float-input3"
+        type="date"
+        pInputText
+        [(ngModel)]="fechaIngreso"
+        ngModel
+      />
+    </span>
+    <span class="p-float-label m-3">
+      <input
+        id="float-input3"
+        type="number"
+        pInputText
+        [(ngModel)]="valorUnitario"
+        ngModel
+      />
+      <label for="float-input3">valorUnitario</label>
+    </span>
+    <span class="p-float-label m-3">
+      <input
+        id="float-input3"
+        type="number"
+        pInputText
+        [(ngModel)]="cantidad"
+        ngModel
+      />
+      <label for="float-input3">cantidad</label>
+    </span>
+    <span class="p-float-label m-3">
+      <input
+        id="float-input3"
+        type="number"
+        pInputText
+        [(ngModel)]="totalCompra"
+        ngModel
+      />
+      <label for="float-input3">totalCompra</label>
+    </span>
+    <span class="p-float-label m-3">
+      <input
+        id="float-input3"
+        type="text"
+        pInputText
+        [(ngModel)]="proveedor"
+        ngModel
+      />
+      <label for="float-input3">proveedor</label>
+    </span>
+    <span class="p-float-label m-3">
+      <input
+        id="float-input3"
+        type="text"
+        pInputText
+        [(ngModel)]="estado"
+        ngModel
+      />
+      <label for="float-input3">estado</label>
+    </span>
+  </div>
+  <button
+    class="m-3"
+    pButton
+    type="button"
+    label="Agregar"
+    (click)="agregarProducto()"
+  ></button>
+</div>
