@@ -12,6 +12,7 @@ export class MenubarComponent implements OnInit {
     this.items = [
       {
         label: 'Facturación',
+        routerLink: '/',
       },
       {
         label: 'Recibos de Caja',
@@ -63,7 +64,7 @@ export class MenubarComponent implements OnInit {
           { label: 'Clientes' },
           { label: 'Proveedores' },
           { label: 'Backup' },
-          { label: 'Productos' },
+          { label: 'Productos', routerLink: '/productos' },
         ],
       },
     ];

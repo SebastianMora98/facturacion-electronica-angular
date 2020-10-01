@@ -19,10 +19,11 @@ export class ListaAccesoriosComponent implements OnInit {
     private primengConfig: PrimeNGConfig
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.primengConfig.ripple = true;
+  }
 
   onRowEditInit(accesorio: IAccesorio) {
-    this.primengConfig.ripple = true;
     this.accesoriosClonados[accesorio.codigo] = { ...accesorio };
   }
 

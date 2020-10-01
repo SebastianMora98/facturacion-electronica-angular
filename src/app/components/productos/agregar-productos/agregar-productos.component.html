@@ -1,0 +1,73 @@
+<p-toast></p-toast>
+<div class="card mt-3">
+  <h5 class="m-3">Agregar producto</h5>
+  <div class="p-d-flex p-flex-wrap">
+    <span class="p-float-label m-3">
+      <input
+        id="float-input2"
+        type="text"
+        pInputText
+        [(ngModel)]="codigo"
+        ngModel
+      />
+      <label for="float-input2">Codigo</label>
+    </span>
+    <span class="p-float-label m-3">
+      <input
+        id="float-input3"
+        type="text"
+        pInputText
+        [(ngModel)]="nombre"
+        ngModel
+      />
+      <label for="float-input3">Nombre</label>
+    </span>
+    <span class="p-float-label m-3">
+      <input
+        id="float-input3"
+        type="number"
+        pInputText
+        [(ngModel)]="cantidadStock"
+        ngModel
+      />
+      <label for="float-input3">Cantidad Stock</label>
+    </span>
+    <span class="p-float-label m-3">
+      <input
+        id="float-input3"
+        type="number"
+        pInputText
+        [(ngModel)]="stockMinimo"
+        ngModel
+      />
+      <label for="float-input3">Stock Mínimo</label>
+    </span>
+    <span class="p-float-label m-3">
+      <input
+        id="float-input3"
+        type="number"
+        pInputText
+        [(ngModel)]="StockMaximo"
+        ngModel
+      />
+      <label for="float-input3">Stock Máximo</label>
+    </span>
+    <div class="p-field p-col-12 p-md-3" style="margin-bottom: 0px">
+      <p-dropdown
+        name="estadoSeleccionado"
+        optionLabel="name"
+        [style]="{ 'margin-left': '7px' }"
+        [options]="iva"
+        [(ngModel)]="ivaSeleccionado"
+        [ngModelOptions]="{ standalone: true }"
+      ></p-dropdown>
+    </div>
+  </div>
+  <button
+    class="m-3"
+    pButton
+    type="button"
+    label="Agregar"
+    (click)="agregarProducto()"
+  ></button>
+</div>

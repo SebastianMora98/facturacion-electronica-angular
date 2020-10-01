@@ -35,6 +35,10 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MessagesModule } from 'primeng/messages';
 import { DialogModule } from 'primeng/dialog';
 import { GenerarRecaudosComponent } from './components/facturas/generar-recaudos/generar-recaudos.component';
+import { ListaProductosComponent } from './components/productos/lista-productos/lista-productos.component';
+import { AgregarProductosComponent } from './components/productos/agregar-productos/agregar-productos.component';
+import { HomeComponent } from './pages/home/home.component';
+import { ProductosComponent } from './pages/productos/productos.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +53,10 @@ import { GenerarRecaudosComponent } from './components/facturas/generar-recaudos
     DetallesFacturaComponent,
     ListaRecaudosComponent,
     GenerarRecaudosComponent,
+    ListaProductosComponent,
+    AgregarProductosComponent,
+    HomeComponent,
+    ProductosComponent,
   ],
   imports: [
     BrowserModule,
