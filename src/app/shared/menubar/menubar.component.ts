@@ -21,6 +21,7 @@ export class MenubarComponent implements OnInit {
           },
           {
             label: 'Gestionar Recaudos',
+            routerLink: '/gestionar-recaudos',
           },
           {
             label: 'Autorización Anular Pagos',

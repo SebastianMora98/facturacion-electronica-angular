@@ -7,8 +7,8 @@ import { MessageService } from 'primeng/api';
 import { PrimeNGConfig } from 'primeng/api';
 import { ConfirmationService } from 'primeng/api';
 import { ICliente } from 'src/app/interfaces/clientes';
-import { AccesoriosService } from '../../services/accesorios.service';
-import { OrdenesService } from '../../services/ordenes.service';
+import { AccesoriosService } from '../../services/accesorios/accesorios.service';
+import { OrdenesService } from '../../services/ordenes/ordenes.service';
 import { IOrden } from 'src/app/interfaces/orden';
 
 interface IDropdown {

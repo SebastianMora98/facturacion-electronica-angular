@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
 import { IAccesorio } from '../../../interfaces/accesorio';
-import { AccesoriosService } from '../../../services/accesorios.service';
+import { AccesoriosService } from '../../../services/accesorios/accesorios.service';
 
 import { MessageService } from 'primeng/api';
 

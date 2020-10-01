@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AccesoriosComponent } from './pages/accesorios/accesorios.component';
 import { AdministrarOrdenesComponent } from './pages/administrar-ordenes/administrar-ordenes.component';
+import { GestionarRecaudosComponent } from './pages/gestionar-recaudos/gestionar-recaudos.component';
 
 const routes: Routes = [
   { path: 'accesorios', component: AccesoriosComponent },
   { path: 'administrar-ordenes', component: AdministrarOrdenesComponent },
+  { path: 'gestionar-recaudos', component: GestionarRecaudosComponent },
 ];
 
 @NgModule({

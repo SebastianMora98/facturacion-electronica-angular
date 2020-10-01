@@ -29,6 +29,8 @@ import { ListaClientesComponent } from './components/clientes/lista-clientes/lis
 import { MultiSelectModule } from 'primeng/multiselect';
 import { CalendarModule } from 'primeng/calendar';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ListaFacturasComponent } from './components/facturas/lista-facturas/lista-facturas.component';
+import { GestionarRecaudosComponent } from './pages/gestionar-recaudos/gestionar-recaudos.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +40,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     AgregarAccesorioComponent,
     AdministrarOrdenesComponent,
     ListaClientesComponent,
+    ListaFacturasComponent,
+    GestionarRecaudosComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,12 +1,12 @@
 <p-toast></p-toast>
-<div class="card mt-3">
+<div class="card mt-3 p-3">
+  <h5>Accesorios</h5>
   <p-table
     [value]="this.accesorioService.accesorios"
     dataKey="id"
     editMode="row"
     styleClass="p-datatable-sm"
   >
-    <ng-template pTemplate="caption"> Accesorios </ng-template>
     <ng-template pTemplate="header">
       <tr>
         <th>Código</th>

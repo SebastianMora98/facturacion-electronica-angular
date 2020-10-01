@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ICliente } from '../../../interfaces/clientes';
-import { ClientesService } from '../../../services/clientes.service';
+import { ClientesService } from '../../../services/clientes/clientes.service';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DynamicDialogConfig } from 'primeng/dynamicdialog';
 

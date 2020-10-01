@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IAccesorio } from '../../../interfaces/accesorio';
-import { AccesoriosService } from '../../../services/accesorios.service';
+import { AccesoriosService } from '../../../services/accesorios/accesorios.service';
 
 import { MessageService } from 'primeng/api';
 @Component({
